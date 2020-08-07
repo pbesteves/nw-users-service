@@ -1,0 +1,41 @@
+{
+  "name": "users-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch": "babel-watch -L src/index.js "
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-watch": "^7.0.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.6.0",
+    "jest": "^26.2.2",
+    "lint-staged": ">=10",
+    "mongoose": "^5.9.27",
+    "prettier": "2.0.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "husky": ">=4",
+    "mongodb": "^3.6.0",
+    "nodemailer": "^6.4.11"
+  }
+}
