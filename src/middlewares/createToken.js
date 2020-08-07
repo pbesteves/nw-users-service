@@ -1,11 +1,11 @@
-import Token from "@/db/models/tokenModel";
-import makeToken from "@/components/makeToken";
+import Token from '@/db/models/tokenModel'
+import makeToken from '@/components/makeToken'
 
 const createToken = (req, res, next) => {
   req.tokenComponent = (id) => {
-    return new Token(makeToken(id));
-  };
-  next();
-};
+    return new Token(makeToken(id))
+  }
+  next()
+}
 
-export default createToken;
+export default createToken

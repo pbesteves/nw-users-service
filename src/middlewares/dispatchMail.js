@@ -1,8 +1,8 @@
-import mailer from "@/components/mailer";
+import mailer from '@/components/mailer'
 
 const dispatchMail = (req, res, next) => {
-  req.emailComponent = mailer;
-  next();
-};
+  req.emailComponent = mailer
+  next()
+}
 
-export default dispatchMail;
+export default dispatchMail

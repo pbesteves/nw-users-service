@@ -1,4 +1,4 @@
-import addUserController from "@/controllers/addUserController";
+import addUserController from '@/controllers/addUserController'
 
 const addUserHandler = async (
   payload,
@@ -8,16 +8,16 @@ const addUserHandler = async (
   mailerMiddleware
 ) => {
   try {
-    await openDbConnection();
+    await openDbConnection()
     return addUserController(
       payload,
       userModel,
       tokenMiddleware,
       mailerMiddleware
-    );
+    )
   } catch (err) {
-    throw new Error(err);
+    throw new Error(err)
   }
-};
+}
 
-export default addUserHandler;
+export default addUserHandler

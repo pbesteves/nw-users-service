@@ -1,4 +1,4 @@
-import confirmationController from "@/controllers/confirmationController";
+import confirmationController from '@/controllers/confirmationController'
 
 const confirmationHandler = async (
   payload,
@@ -7,11 +7,11 @@ const confirmationHandler = async (
   tokenModel
 ) => {
   try {
-    await openDbConnection();
-    return confirmationController(payload, userModel, tokenModel);
+    await openDbConnection()
+    return confirmationController(payload, userModel, tokenModel)
   } catch (err) {
-    throw new Error(err);
+    throw new Error(err)
   }
-};
+}
 
-export default confirmationHandler;
+export default confirmationHandler
