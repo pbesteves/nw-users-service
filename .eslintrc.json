@@ -5,7 +5,11 @@
     "jest": true,
     "mongo": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "eslint-config-prettier"
+  ],
   "parserOptions": {
     "ecmaVersion": 11,
     "sourceType": "module"
