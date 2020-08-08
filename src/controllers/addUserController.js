@@ -32,14 +32,14 @@ const addUserController = async (
       }
     })
 
-    mailerMiddleware(
-      user.email,
-      'Hello, please verify your email',
-      `
-                Please verify your email address by clicking in the link below:
-                http://localhost/confirmation/${token.token}
-            `
-    )
+    mailerMiddleware({
+      to: user.email,
+      subject: 'Hello, please verify your email',
+      text: `
+          Please verify your email address by clicking in the link below:
+          http://localhost/confirmation/${token.token}
+      `,
+    })
   } catch (error) {
     return { msg: error.message }
   }
