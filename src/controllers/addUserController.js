@@ -36,9 +36,9 @@ const addUserController = async (
       user.email,
       'Hello, please verify your email',
       `
-                Please verify your email address by clicking in the link below:
-                http://localhost/confirmation/${token.token}
-            `
+          Hey ${user.username}, here is a link to verify your account
+          http://localhost/confirmation/${token.token}
+      `
     )
   } catch (error) {
     return { msg: error.message }

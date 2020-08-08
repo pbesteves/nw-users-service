@@ -9,6 +9,7 @@ import Token from '@/db/models/tokenModel'
 // Handlers
 import addUserHandler from '@/handlers/addUserHandler'
 import confirmationHandler from '@/handlers/confirmationHandler'
+import resendTokenHandler from '@/handlers/resendTokenHandler'
 
 // Middlewares
 import bodyParser from 'body-parser'
@@ -41,6 +42,18 @@ app.post('/api/v1/users/signup', async (req, res) => {
 
 app.post('/api/v1/users/confirmation', async (req, res) => {
   res.json(await confirmationHandler(req.body, makeConnection, User, Token))
+})
+
+app.post('/api/v1/users/resend', async (req, res) => {
+  res.json(
+    await resendTokenHandler(
+      req.body,
+      makeConnection,
+      User,
+      req.tokenComponent,
+      req.emailComponent
+    )
+  )
 })
 
 app.listen(process.env.PORT, () => {
