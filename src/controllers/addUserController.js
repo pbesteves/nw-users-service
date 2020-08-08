@@ -3,10 +3,12 @@ import createUser from '@/domain/createUser'
 const addUserController = async (
   payload,
   User,
+  encryptMiddleware,
   tokenMiddleware,
   mailerMiddleware
 ) => {
-  const userData = createUser(payload)
+  const hash = await encryptMiddleware(payload.password)
+  const userData = createUser({ hash, ...payload })
 
   try {
     let user = await User.findOne({ email: userData.email })
