@@ -4,6 +4,7 @@ const addUserHandler = async (
   payload,
   openDbConnection,
   userModel,
+  encryptMiddleware,
   tokenMiddleware,
   mailerMiddleware
 ) => {
@@ -12,6 +13,7 @@ const addUserHandler = async (
     return addUserController(
       payload,
       userModel,
+      encryptMiddleware,
       tokenMiddleware,
       mailerMiddleware
     )

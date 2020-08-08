@@ -1,5 +1,4 @@
 import express from 'express'
-import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 
 // DB
@@ -12,13 +11,16 @@ import addUserHandler from '@/handlers/addUserHandler'
 import confirmationHandler from '@/handlers/confirmationHandler'
 
 // Middlewares
+import bodyParser from 'body-parser'
 import createToken from '@/middlewares/createToken'
 import dispatchMail from '@/middlewares/dispatchMail'
+import encryptPassword from '@/middlewares/encryptPassword'
 
 dotenv.config()
 
 const app = express()
 app.use(bodyParser.json())
+app.use(encryptPassword)
 app.use(createToken)
 app.use(dispatchMail)
 
@@ -30,6 +32,7 @@ app.post('/api/v1/users/signup', async (req, res) => {
       req.body,
       makeConnection,
       User,
+      req.encryptComponent,
       req.tokenComponent,
       req.emailComponent
     )
