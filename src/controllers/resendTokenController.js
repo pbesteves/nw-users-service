@@ -1,8 +1,8 @@
 const resendTokenController = async (
   payload,
   User,
-  mailerMiddleware,
-  tokenMiddleware
+  tokenMiddleware,
+  mailerMiddleware
 ) => {
   try {
     const user = await User.findOne({ email: payload.email })

@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer'
 
-const mailer = (to, subject, text) => {
+const mailer = ({ ...mailOptions }) => {
+  const { to, subject, text } = mailOptions
+
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     auth: {
