@@ -7,10 +7,10 @@ const addUserController = async (
   tokenMiddleware,
   mailerMiddleware
 ) => {
-  const hash = await encryptMiddleware(payload.password)
-  const userData = createUser({ hash, ...payload })
-
   try {
+    const hash = await encryptMiddleware(payload.password)
+    const userData = createUser({ hash, ...payload })
+
     let user = await User.findOne({ email: userData.email })
     if (user) {
       return { msg: 'This email is already associated with an account.' }
