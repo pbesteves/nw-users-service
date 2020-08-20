@@ -10,6 +10,7 @@ import Token from '@/db/models/tokenModel'
 import addUserHandler from '@/handlers/addUserHandler'
 import confirmationHandler from '@/handlers/confirmationHandler'
 import resendTokenHandler from '@/handlers/resendTokenHandler'
+import deleteUserHandler from '@/handlers/deleteUserHandler'
 
 // Middlewares
 import bodyParser from 'body-parser'
@@ -53,6 +54,12 @@ app.post('/api/v1/users/resend', async (req, res) => {
       req.tokenComponent,
       req.emailComponent
     )
+  )
+})
+
+app.delete('/api/v1/users/delete', async (req, res) => {
+  res.json(
+    await deleteUserHandler(req.body, makeConnection, User, req.emailComponent)
   )
 })
 
