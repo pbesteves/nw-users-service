@@ -11,12 +11,14 @@ import addUserHandler from '@/handlers/addUserHandler'
 import confirmationHandler from '@/handlers/confirmationHandler'
 import resendTokenHandler from '@/handlers/resendTokenHandler'
 import deleteUserHandler from '@/handlers/deleteUserHandler'
+import editUserHandler from '@/handlers/editUserHandler'
 
 // Middlewares
 import bodyParser from 'body-parser'
 import createToken from '@/middlewares/createToken'
 import dispatchMail from '@/middlewares/dispatchMail'
 import encryptPassword from '@/middlewares/encryptPassword'
+import comparePasswords from '@/middlewares/comparePasswords'
 
 dotenv.config()
 
@@ -25,6 +27,7 @@ app.use(bodyParser.json())
 app.use(encryptPassword)
 app.use(createToken)
 app.use(dispatchMail)
+app.use(comparePasswords)
 
 app.route('/api/v1/users').get((req, res) => res.send('Get users route'))
 
@@ -53,6 +56,20 @@ app.post('/api/v1/users/resend', async (req, res) => {
       User,
       req.tokenComponent,
       req.emailComponent
+    )
+  )
+})
+
+app.put('/api/v1/users/edit', async (req, res) => {
+  res.json(
+    await editUserHandler(
+      req.body,
+      makeConnection,
+      User,
+      req.encryptComponent,
+      req.tokenComponent,
+      req.emailComponent,
+      req.checkPasswordsComponent
     )
   )
 })
