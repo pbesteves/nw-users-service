@@ -6,8 +6,15 @@ const userSchema = new Schema({
   email: { type: String, unique: true, required: true },
   isVerified: { type: Boolean, default: false },
   role: { type: String, default: 'Member', required: true },
-  passwordResetToken: String,
-  passwordResetExpires: Date,
+  passwordResetToken: {
+    type: String,
+    createdAt: {
+      type: Date,
+      required: true,
+      default: Date.now,
+      expires: 43200,
+    },
+  },
   username: { type: String, unique: true, required: true },
   hash: { type: String, required: true },
 })
