@@ -1,9 +1,9 @@
 /**
  * @param  {boolean} isAdmin
  * @param  {{ role: string }} newRole
- * @return {object} role
+ * @return {{ role: string }}
  */
-const createRole = (isAdmin, newRole) => {
+const createRole = (isAdmin = false, newRole) => {
   if (!isAdmin)
     throw new Error("You don't have enough permissions to make this action")
 

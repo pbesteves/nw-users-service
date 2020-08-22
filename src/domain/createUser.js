@@ -1,10 +1,4 @@
-const createUser = ({
-  username,
-  email,
-  hash,
-  isVerified = false,
-  role = 'Member',
-}) => {
+const createUser = ({ username, email, hash, isVerified = false, roleId }) => {
   if (!username) throw new Error("Username can't be empty")
   if (!email) throw new Error("Email can't be empty")
 
@@ -13,7 +7,7 @@ const createUser = ({
     isVerified,
     hash,
     username,
-    role,
+    _roleId: roleId,
   })
 }
 
