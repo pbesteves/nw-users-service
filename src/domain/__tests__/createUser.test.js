@@ -7,21 +7,18 @@ describe('Create user object', () => {
       isVerified: false,
       hash: '$2y$10$PypuMtWBajv6ay/wmEZlGOughm9QKmZKyT/HY.2DbSt7SekVv8TcG',
       username: 'testname',
-      role: 'Admin',
+      roleId: 'somerandomhash123123',
     }
 
-    expect(createUser(user)).toStrictEqual(user)
-  })
-
-  it('should create a new user object with role property set to Member by default', () => {
-    const user = {
+    const result = {
       email: 'test@test.com',
       isVerified: false,
       hash: '$2y$10$PypuMtWBajv6ay/wmEZlGOughm9QKmZKyT/HY.2DbSt7SekVv8TcG',
       username: 'testname',
+      _roleId: 'somerandomhash123123',
     }
 
-    expect(createUser(user)).toHaveProperty('role', 'Member')
+    expect(createUser(user)).toStrictEqual(result)
   })
 
   it('should create a new user object with isVerified property set to false by default', () => {

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   email: { type: String, unique: true, required: true },
   isVerified: { type: Boolean, default: false },
-  role: { type: String, default: 'Member', required: true },
+  _roleId: { type: mongoose.ObjectId, required: true, ref: 'Role' },
   passwordResetToken: {
     type: String,
     createdAt: {

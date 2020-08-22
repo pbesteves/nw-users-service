@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import makeConnection from '@/db/makeConnection'
 import User from '@/db/models/userModel'
 import Token from '@/db/models/tokenModel'
+import Role from '@/db/models/roleModel'
 
 // Handlers
 import addUserHandler from '@/handlers/addUserHandler'
@@ -12,6 +13,7 @@ import confirmationHandler from '@/handlers/confirmationHandler'
 import resendTokenHandler from '@/handlers/resendTokenHandler'
 import deleteUserHandler from '@/handlers/deleteUserHandler'
 import editUserHandler from '@/handlers/editUserHandler'
+import createRoleHandler from '@/handlers/createRoleHandler'
 
 // Middlewares
 import bodyParser from 'body-parser'
@@ -78,6 +80,10 @@ app.delete('/api/v1/users/delete', async (req, res) => {
   res.json(
     await deleteUserHandler(req.body, makeConnection, User, req.emailComponent)
   )
+})
+
+app.post('/api/v1/roles/create', async (req, res) => {
+  res.json(await createRoleHandler(req.body, makeConnection, User, Role))
 })
 
 app.listen(process.env.PORT, () => {
